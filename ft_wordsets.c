@@ -2,16 +2,18 @@
 
 size_t	ft_wordsets(char *str, char sep)
 {
-	size_t = sets;
-	size_t i;
+	size_t	result;
+	size_t	i;
 
-	while(str[i])
+	i = 0;
+	result = 0;
+	while (str[i])
 	{
-		while(str[i] && str[i] == sep)
+		while (str[i] && str[i] == sep)
 			i++;
-		while(str[i] && str[i] != sep)
-			i++
+		while (str[i] && str[i] != sep)
+			i++;
 		result++;
 	}
-	return(result);
+	return (result);
 }

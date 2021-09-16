@@ -3,10 +3,10 @@
 
 void	*ft_memset(void *str, int c, size_t n)
 {
-	unsigned char *string;
-	
-	string = (unsigned char*)str;
+	unsigned char	*string;
+
+	string = (unsigned char *)str;
 	while (len-- > 0)
-		*(string++)	= (unsigned char)c;
+		*(string++) = (unsigned char)c;
 	return (str);
 }

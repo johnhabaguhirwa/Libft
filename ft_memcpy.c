@@ -1,13 +1,13 @@
-void	(void *dest, const void src, size_t n)
+void	*ft_memcpy(void *dst, const void src, size_t n)
 {
-	char *destin;
-	char *source;
+	char	*destin;
+	char	*source;
 
-	destin = (char *)dest;
+	destin = (char *)dst;
 	source = (char *)src;
 	if (!dst && !src)
-		return(dest);
-	while(n--)
+		return (dst);
+	while (n--)
 		*destin++ = *source++;
-	return(dest)
+	return (dst);
 }

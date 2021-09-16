@@ -1,26 +1,26 @@
+#include "libft.h"
+
 static char	word_after(char const *s, char c)
 {
-	while(*s && *s == c)
+	while (*s && *s == c)
 		s++;
-	return((char *)s);
+	return ((char *)s);
 }
 
 static size_t	word_len(char const *s, char c)
 {
 	size_t = i;
-
 	i = 0;
-	while(s[i] && s[i] != c)
+	while (s[i] && s[i] != c)
 		i++;
-	return(i)
+	return (i);
 }
 
-void *clean_current(char **split, size_t current)
+void	*clean_current(char **split, size_t current)
 {
 	size_t = i;
-
 	i = 0;
-	while(i < current)
+	while (i < current)
 	{
 		free(split[i]);
 		i++;
@@ -31,14 +31,14 @@ void *clean_current(char **split, size_t current)
 
 char	**ft_split(char const *s, char c)
 {
-	char 	**split;
+	char	**split;
 	size_t	current;
 	size_t	wordcount;
 
 	wordcount = ft_wordsets((char *)s, c);
-	split = (char**)malloc(sizeof(char*) * (wordcount + 1));
+	split = (char **)malloc(sizeof(char *) * (wordcount + 1));
 	if (split == NULL)
-		return(NULL);
+		return (NULL);
 	current = 0;
 	while (current < wordcount)
 	{
@@ -47,11 +47,11 @@ char	**ft_split(char const *s, char c)
 		if (split[current] == NULL)
 		{
 			clean_current(split, current);
-			return(NULL);
+			return (NULL);
 		}
 		current++;
 		s = s + word_len(s, c);
 	}
 	split(wordcount) = NULL;
-	return(split);
+	return (split);
 }
