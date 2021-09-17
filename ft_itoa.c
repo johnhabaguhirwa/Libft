@@ -18,7 +18,7 @@ char	*ft_itoa(int n)
 	result = malloc(sizeof(char) * (len + 1));
 	result[len] = '\0';
 	if (n < 0)
-		results[0] = '-';
+		result[0] = '-';
 	else if (n == 0)
 		result[0] = '0';
 	while (n != 0)

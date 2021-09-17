@@ -6,5 +6,5 @@ void	ft_bzero(void *s, size_t n)
 
 	new_s = (unsigned char *)s;
 	while (n-- > 0)
-		*(s1++) = '\0';
+		*(new_s++) = 0;
 }
