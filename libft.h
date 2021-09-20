@@ -33,7 +33,7 @@ void			*ft_memmove(void *dst, const void *src, size_t len);
 
 void			*ft_memset(void *b, int c, size_t len);
 
-int				ft_nbrlen(int n); 
+int				ft_nbrlen(int n);
 
 void			ft_putchar_fd(char c, int fd);
 

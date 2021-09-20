@@ -4,8 +4,8 @@ char	*ft_strrchar(const char *s, int c)
 
 	s_hold = s;
 	while (*s++)
-	if (c == '\0')
-		return ((char *)s);
+		if (c == '\0')
+			return ((char *)s);
 	while (s >= s_hold)
 	{
 		if (*s == c)

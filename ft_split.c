@@ -4,12 +4,13 @@ static char	*word_after(char const *s, char c)
 {
 	while (*s && *s == c)
 		s++;
-	return ((char*)s);
+	return ((char *)s);
 }
 
 static size_t	word_len(char const *s, char c)
 {
-	size_t i;
+	size_t	i;
+
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
@@ -18,7 +19,8 @@ static size_t	word_len(char const *s, char c)
 
 void	*clean_current(char **split, size_t current)
 {
-	size_t i;
+	size_t	i;
+
 	i = 0;
 	while (i < current)
 	{
