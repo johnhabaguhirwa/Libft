@@ -1,10 +1,10 @@
 #include "libft.h"
 
-static char	word_after(char const *s, char c)
+static char	*word_after(char const *s, char c)
 {
 	while (*s && *s == c)
 		s++;
-	return (*(char*)s);
+	return ((char*)s);
 }
 
 static size_t	word_len(char const *s, char c)
@@ -42,8 +42,8 @@ char	**ft_split(char const *s, char c)
 	current = 0;
 	while (current < wordcount)
 	{
-		s = (int)word_after(s, c);
-		split[current] = ft_strsub(s, 0, word_len(s, c));
+		s = word_after(s, c);
+		split[current] = ft_substr(s, 0, word_len(s, c));
 		if (split[current] == NULL)
 		{
 			clean_current(split, current);
@@ -52,6 +52,6 @@ char	**ft_split(char const *s, char c)
 		current++;
 		s = s + word_len(s, c);
 	}
-	split(wordcount) = NULL;
+	split[wordcount] = NULL;
 	return (split);
 }
