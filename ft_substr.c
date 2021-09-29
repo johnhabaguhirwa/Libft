@@ -4,10 +4,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	sub_len;
+	size_t	i;
 
-	sub_len = len - start;
-	sub = (char *)malloc(sizeof(char) * (sub_len + 1));
-	if (sub == 0)
+	i = 0;
+	sub_len = ft_strlen(s);
+	sub = (char *)malloc((sub_len - len) + 1);
+	if (!sub)
 		return (NULL);
 	ft_strncpy(sub, s + start, len);
 	return (sub);

@@ -15,7 +15,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			destin[len - n] = source[len - n];
 	}
 	else
-		while (len-- < 0)
+		while (len--)
 			*(destin++) = *(source++);
 	return (dst);
 }

@@ -14,7 +14,7 @@ int	ft_atoi(const char *str)
 	{
 		c++;
 	}
-	while (str[c] == '+' || str[c] == '-')
+	if (str[c] == '+' || str[c] == '-')
 	{
 		if (str[c] == '-' )
 		{

@@ -1,59 +1,62 @@
 #include "libft.h"
 
-static char	*word_after(char const *s, char c)
-{
-	while (*s && *s == c)
-		s++;
-	return ((char *)s);
-}
-
 static size_t	word_len(char const *s, char c)
 {
+	size_t	len;
 	size_t	i;
 
+	len = 0;
 	i = 0;
-	while (s[i] && s[i] != c)
+	while (s[i] == c)
 		i++;
-	return (i);
+	while (s[i++] && s[i] != c)
+		len++;
+	return (len);
 }
 
-void	*clean_current(char **split, size_t current)
+size_t	ft_wordsets(char *str, char sep)
 {
+	size_t	result;
 	size_t	i;
 
+	result = 0;
 	i = 0;
-	while (i < current)
+	while (str[i])
 	{
-		free(split[i]);
-		i++;
+		while (str[i] == sep)
+			i++;
+		if (str[i] && str[i] != sep)
+			result++;
+		while (str[i] && str[i] != sep)
+			i++;
 	}
-	free(split);
-	return (NULL);
+	return (result);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
 	size_t	current;
-	size_t	wordcount;
+	size_t	a;
+	size_t	b;
 
-	wordcount = ft_wordsets((char *)s, c);
-	split = (char **)malloc(sizeof(char *) * (wordcount + 1));
-	if (split == NULL)
+	split = malloc(sizeof(char *) * (ft_wordsets((char *)s, c) + 1));
+	if (!split || !s)
 		return (NULL);
 	current = 0;
-	while (current < wordcount)
+	b = 0;
+	while (current < ft_wordsets((char *)s, c))
 	{
-		s = word_after(s, c);
-		split[current] = ft_substr(s, 0, word_len(s, c));
-		if (split[current] == NULL)
-		{
-			clean_current(split, current);
+		split[current] = (char *)malloc(sizeof(char) * word_len(&s[b], c));
+		if (!split)
 			return (NULL);
-		}
+		a = 0;
+		while (s[b] == c)
+			b++;
+		while (s[b] && s[b] != c)
+			split[current][a++] = s[b++];
+		split[current][a++] = '\0';
 		current++;
-		s = s + word_len(s, c);
 	}
-	split[wordcount] = NULL;
 	return (split);
 }
