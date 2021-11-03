@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhabaguh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/01 15:22:52 by jhabaguh          #+#    #+#             */
+/*   Updated: 2021/10/04 15:38:50 by jhabaguh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	word_len(char const *s, char c)
@@ -33,6 +45,17 @@ size_t	ft_wordsets(char *str, char sep)
 	return (result);
 }
 
+static char	*ft_allonewstr(size_t size)
+{
+	char	*str;
+
+	str = (char *)malloc(sizeof(char) * size + 1);
+	if (!str)
+		return (NULL);
+	ft_bzero(str, size + 1);
+	return (str);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
@@ -43,20 +66,20 @@ char	**ft_split(char const *s, char c)
 	split = malloc(sizeof(char *) * (ft_wordsets((char *)s, c) + 1));
 	if (!split || !s)
 		return (NULL);
-	current = 0;
+	current = -1;
 	b = 0;
-	while (current < ft_wordsets((char *)s, c))
+	while (++current < ft_wordsets((char *)s, c))
 	{
-		split[current] = (char *)malloc(sizeof(char) * word_len(&s[b], c));
-		if (!split)
-			return (NULL);
 		a = 0;
+		split[current] = ft_allonewstr(word_len(&s[b], c) + 1);
+		if (!split)
+			split[current] = NULL;
 		while (s[b] == c)
 			b++;
 		while (s[b] && s[b] != c)
 			split[current][a++] = s[b++];
 		split[current][a++] = '\0';
-		current++;
 	}
+	split[current] = 0;
 	return (split);
 }
