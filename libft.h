@@ -6,7 +6,7 @@
 /*   By: jhabaguh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/01 15:23:39 by jhabaguh          #+#    #+#             */
-/*   Updated: 2021/10/01 15:23:39 by jhabaguh         ###   ########.fr       */
+/*   Updated: 2022/03/09 15:33:03 by jhabaguh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdarg.h>
+
+typedef struct s_va
+{
+	va_list	args;
+	int		counter;
+}	t_va;
 
 int			ft_atoi(const char *str);
 
@@ -89,5 +96,20 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_tolower(int c);
 
 int			ft_toupper(int c);
+int			ft_printf(const char *format, ...);
+
+void		ischar(t_va *arg_struct);
+
+void		isstring(t_va *arg_struct);
+
+void		isint(t_va *arg_struct);
+
+void		isunint(t_va *arg_struct);
+
+void		ispointer(t_va *arg_struct);
+
+void		ishex(t_va *arg_struct, char c);
+
+char		*get_next_line(int fd);
 
 #endif
